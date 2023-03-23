@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>Seller lists</h1>
+
+<div class="articles">
+  {% for item in items %}
+  <div class="article">
+    <h2>
+      <a href="{% url 'seller:detail' slug=item.slug %}">{{item.name}}</a>
+    </h2>
+    <p>Seller Name: {{item.name}}</p>
+    <p>Price: {{item.price}}</p>
+    <p>Quantity: {{item.quantity}}</p>
+    <p>Description: {{item.description}}</p>
+    <img src="{{item.thumb.url}}" />
+    <p class="author">Added by: {{item.author}}</p>
+    <!--<p class="author">Added by: {{article.author.username}} </p> This will also work as above -->
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
