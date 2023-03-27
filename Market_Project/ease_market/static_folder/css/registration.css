@@ -6,6 +6,8 @@
 body{  
   font-family: Calibri, Helvetica, sans-serif;  
   background-color:white;
+  margin-left: 10%;
+  margin-right: 10%;
 }  
 .container {  
     padding: 50px;  
