@@ -82,8 +82,10 @@ def seller_create(request):
 
 class SellerListView(View):
 	def get(self, request, *args, **kwargs):
-		sellers = Seller.objects.all()
+		#sellers = Seller.objects.all()
+		sellers = Seller.objects.filter(author=request.user)
 		context = {'sellers': sellers }
+		print(request.user)
 		return render(request, 'seller/seller_list.html', context)
 
 def seller_detail(request, slug):

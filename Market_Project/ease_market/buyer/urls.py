@@ -10,5 +10,5 @@ urlpatterns = [
     # path('logout/', logout_view, name='logout'),
     # re_path('create/?', seller_create, name='create_product'),
     path('', ProductListView.as_view(), name='seller_list'),
-    re_path (r'^(?P<slug>[\w-]+)', product_detail, name='product_detail'),
+    #re_path (r'^(?P<slug>[\w-]+)', product_detail, name='product_detail'),
 ]
