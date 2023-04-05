@@ -1,15 +1,19 @@
+{% load static %}
 <!DOCTYPE html>  
 <html>  
 <head>  
 <meta name="viewport" content="width=device-width, initial-scale=1"> 
   <title>Registration Page</title>
-<link rel="stylesheet" href="/Market_Project/ease_market/static_folder/css/registration.css" />
+<!-- <link rel="stylesheet" href="../css/registration.css" /> -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/registration.css' %}">
 
 </head>  
 <body>  
-<form>  
+  
+<form action="{% url 'seller:signup' %}" method="post">   {% csrf_token %}
   <div class="container">  
-  <center>  <h1> Student Registeration Form</h1> </center>  
+  <center>  <h1> {% if error_message %} {{error_message}}, Register Again {% else %} Seller
+    Registration Form <a href="{% url 'seller:login' %}"> Login</a>{% endif %}</h1> </center>  
   <hr>  
   <label> Username </label>   
 <input type="text" name="username" placeholder= "Username" size="15" required />
@@ -19,7 +23,7 @@
 State :  
 </label>   
   
-<select>  
+<select name="state">  
    <option value="Abia">Abia</option>
    <option value="Adamawa">Adamawa</option>
    <option value="Akwa Ibom">Akwa Ibom</option>
@@ -57,8 +61,8 @@ State :
    <option value="Zamfara">Zamfara</option>
 </select>  
 </div>  
- <label for="country"><b>Country</b></label>  
- <input type="text" name="Country" required>  
+ <label for="fullname"><b>Full name</b></label>  
+ <input type="text" name="fullname" required>  
   
 <div>  
 <label>   
@@ -72,19 +76,19 @@ Gender :
 <label>   
 Phone Number:  
 </label>  
-<input type="text" name="country code" placeholder="Country Code"  value="+234" size="2"/>   
-<input type="text" name="phone" placeholder="Whatsapp no." size="13"/ required>   
+<input type="text" name="phone" placeholder="Country Code"  value="+234" size="2"/>   
+<input type="text" name="country" placeholder="Country Name." size="20"/ required>   
 Contact Address :  
-<textarea cols="60" rows="4" placeholder="Current Address" value=" Contact address" required>  
+<textarea cols="60" rows="4" placeholder="Current Address" value=" Contact address" required name="address">  
 </textarea>  
  <label for="email"><b>Email</b></label>  
  <input type="text" placeholder="Enter Email" name="email" required>  
   
-    <label for="psw"><b>Password</b></label>  
-    <input type="password" placeholder="Enter Password" name="psw" required>  
+    <label for="password"><b>Password</b></label>  
+    <input type="password" placeholder="Enter Password" name="password" required >  
   
-    <label for="psw-repeat"><b>Re-type Password</b></label>  
-    <input type="password" placeholder="Retype Password" name="psw-repeat" required>  
+    <label for="password2"><b>Re-type Password</b></label>  
+    <input type="password" placeholder="Retype Password" name="password2" required>  
     <button type="submit" class="registerbtn">Register</button>    
 </form>  
 </body>  

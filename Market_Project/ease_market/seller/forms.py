@@ -1,11 +1,11 @@
 from django import forms
 
-from .models import Seller
+from .models import Product
 
 class CreateSeller(forms.ModelForm):
 
 	class Meta:
-		model = Seller
+		model = Product
 		fields = [
 			'name', 
 	        'price',
@@ -14,3 +14,18 @@ class CreateSeller(forms.ModelForm):
 			'slug',
 			'thumb'
 	    ]
+
+
+
+# class CreateRegistrations(forms.ModelForm):
+
+# 	class Meta:
+# 		model = Registrations
+# 		fields = [
+# 			'name', 
+# 	        'price',
+# 	        'quantity',
+# 	        'description',
+# 			'slug',
+# 			'thumb'
+# 	    ]

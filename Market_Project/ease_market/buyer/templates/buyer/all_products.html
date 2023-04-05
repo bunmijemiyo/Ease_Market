@@ -1,20 +1,19 @@
-{% extends 'base.html' %} {% block content %}
-
-<h1>Seller lists</h1>
-
-<div class="articles">
+{% load static %} {% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/detail.css' %}" />
+<h1>Products list <a href="{% url 'buyer:home' %}"> Home</a></h1>
+<div class="container">
   {% for item in items %}
-  <div class="article">
-    <h2>
-      <a href="{% url 'seller:detail' slug=item.slug %}">{{item.name}}</a>
-    </h2>
-    <p>Seller Name: {{item.name}}</p>
-    <p>Price: {{item.price}}</p>
-    <p>Quantity: {{item.quantity}}</p>
-    <p>Description: {{item.description}}</p>
-    <img src="{{item.thumb.url}}" />
-    <p class="author">Added by: {{item.author}}</p>
-    <!--<p class="author">Added by: {{article.author.username}} </p> This will also work as above -->
+  <div class="product">
+    <img src="{{item.thumb.url}}" alt="Product Image" class="product-image" />
+    <div class="product-name">{{item.name}}</div>
+    <div class="product-price">#{{item.price}}</div>
+    <button class="add-to-cart">
+      <a
+        href="{% url 'buyer:product_detail' item.slug %}"
+        class="btn btn-primary"
+        >More Info</a
+      >
+    </button>
   </div>
   {% endfor %}
 </div>
